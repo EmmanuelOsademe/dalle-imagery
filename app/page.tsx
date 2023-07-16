@@ -35,7 +35,7 @@ const Home: React.FC = () => {
         }
 
         fetchPosts();
-    }, []);
+    }, [])
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         clearTimeout(searchTimeout);
