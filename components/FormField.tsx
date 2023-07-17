@@ -1,15 +1,6 @@
-interface Props {
-    labelName?: string;
-    type?: string;
-    name?: string;
-    placeholder?: string;
-    value?: string;
-    handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    isSurpriseMe?: boolean;
-    handleSurpriseMe?: () => void;
-}
+import { FormFieldProps } from "@/types/common.types";
 
-const FormField: React.FC<Props> = ({labelName, type, name, placeholder, value, handleChange, handleSurpriseMe, isSurpriseMe}) => {
+const FormField: React.FC<FormFieldProps> = ({isSearch, handleClearSearch, hasName, userName, labelName, type, name, placeholder, value, handleChange, handleSurpriseMe, isSurpriseMe}) => {
 
     return (
         <div>
@@ -18,7 +9,9 @@ const FormField: React.FC<Props> = ({labelName, type, name, placeholder, value, 
                     htmlFor={name}
                     className="block text-sm font-medium text-gray-900"
                 >
-                    {labelName}
+                    {hasName ? (
+                        <>Hello <strong>{userName}</strong>, {labelName}</>
+                    ): <>{labelName}</>}
                 </label>
                 {isSurpriseMe && (
                     <button
@@ -30,16 +23,27 @@ const FormField: React.FC<Props> = ({labelName, type, name, placeholder, value, 
                     </button>
                 )}
             </div>
-            <input 
-                type={type}
-                id={name}
-                name={name}
-                value={value}
-                placeholder={placeholder}
-                onChange={handleChange}
-                required
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#085f99] focus:border-[#085f99] outline-none block w-full p-3"
-            />
+            <div className="flex items-center gap-2">
+                <input 
+                    type={type} 
+                    id={name}
+                    name={name}
+                    value={value}
+                    placeholder={placeholder}
+                    onChange={handleChange}
+                    required
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#085f99] focus:border-[#085f99] outline-none block w-full p-3"
+                />
+                {isSearch && (
+                    <button
+                        type="button"
+                        onClick={handleClearSearch}
+                        className="font-semibold text-sm bg-[#ececf1] py-3 px-1 rounded-[5px] text-black w-[100px]"
+                    >
+                        Clear filter
+                    </button>
+                )}
+            </div>
         </div>
     )
 }

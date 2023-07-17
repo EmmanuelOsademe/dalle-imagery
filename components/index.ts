@@ -6,6 +6,8 @@ import CustomButton from "./CustomButton";
 import SignOut from "./SignOut";
 import Card from "./Card";
 import FormField from "./FormField";
+import SearchPosts from "./DisplayPosts";
+import CreatePost from "./CreatePost";
 
 export {
     Loader, 
@@ -15,5 +17,7 @@ export {
     CustomButton,
     SignOut,
     Card,
-    FormField
+    FormField,
+    SearchPosts,
+    CreatePost
 }

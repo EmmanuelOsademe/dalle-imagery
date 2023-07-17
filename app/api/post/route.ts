@@ -29,12 +29,13 @@ export const POST = async (req: Request) => {
 
 }
 
-export const GET = async (req: Request) => {
+export const GET = async (req: Request, res: Response) => {
 
     try {
         await connectToMongoDB();
 
         const posts = await Post.find({});
+        console.log(posts.length);
         return new Response(JSON.stringify(posts), {status: 200})
     } catch (e: any) {
         console.log(e.message);
