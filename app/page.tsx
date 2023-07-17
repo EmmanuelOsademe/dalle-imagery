@@ -20,7 +20,7 @@ const Home: React.FC = async () => {
 
 const fetchPosts = async (url: string): Promise<Array<PostTypes>> => {
     try {
-        const response = await fetch(`http://localhost:3000/api/post`, {
+        const response = await fetch(`${url}/api/post`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
