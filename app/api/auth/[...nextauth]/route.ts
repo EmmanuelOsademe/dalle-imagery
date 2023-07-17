@@ -4,9 +4,9 @@ import GithubProvider from "next-auth/providers/github";
 import { SessionInterface, UserProfile } from "@/types/common.types";
 import { connectToMongoDB } from "@/db/mongodb";
 import User from "@/models/user";
-import { NextAuthOptions } from "next-auth";
 
-export const authOptions: NextAuthOptions = {
+
+const handler = NextAuth({
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_ID!,
@@ -66,8 +66,6 @@ export const authOptions: NextAuthOptions = {
             }
         }
     }
-}
-
-const handler = NextAuth(authOptions);
+});
 
 export {handler as GET, handler as POST};
