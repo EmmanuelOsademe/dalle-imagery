@@ -3,7 +3,7 @@ import { SearchPosts } from "@/components";
 
 const Home: React.FC = async () => {
 
-    const posts = await fetchPosts();
+    const posts = await fetchPosts(process.env.SERVER_URL!);
 
     return (
         <section className="max-w-7xl mx-auto">
@@ -18,7 +18,7 @@ const Home: React.FC = async () => {
     )
 }
 
-const fetchPosts = async (): Promise<Array<PostTypes>> => {
+const fetchPosts = async (url: string): Promise<Array<PostTypes>> => {
     try {
         const response = await fetch(`http://localhost:3000/api/post`, {
             method: "GET",
