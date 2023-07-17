@@ -30,6 +30,7 @@ const SignIn: React.FC = () => {
     }, []);
 
     if(!providers)return;
+    console.log(providers)
 
     return (
         <div className="relative">
@@ -54,7 +55,7 @@ const SignIn: React.FC = () => {
                             className="flex items-center justify-start gap-7 hover:bg-blue-200 p-2 rounded-md w-full"
                         >
                             <Image 
-                                src={`/${provider.name}.svg`}
+                                src={`/${provider?.id}.svg`}
                                 alt={`${provider.name} logo`}
                                 width={25}
                                 height={25}
